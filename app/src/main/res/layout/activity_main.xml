@@ -1,0 +1,97 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:paddingBottom="@dimen/activity_vertical_margin"
+    android:paddingLeft="@dimen/activity_horizontal_margin"
+    android:paddingRight="@dimen/activity_horizontal_margin"
+    android:paddingTop="@dimen/activity_vertical_margin"
+    tools:context="de.xappo.dpunkt_android5.MainActivity">
+
+    <TextView
+        android:id="@+id/textview"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Text"
+        />
+
+    <Button
+        android:id="@+id/button_dial"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="dial"
+        android:layout_below="@+id/textview"
+        />
+
+    <Button
+        android:id="@+id/button_thread_endless"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/button_dial"
+        android:text="endless"
+        />
+
+    <Button
+        android:id="@+id/button_thread_looper"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/button_thread_endless"
+        android:text="looper"
+        />
+
+    <Button
+        android:id="@+id/button_connect_geo"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/button_thread_looper"
+        android:text="connect geo"
+        />
+
+    <Button
+        android:id="@+id/button_disconnect_geo"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/button_connect_geo"
+        android:text="disconnect geo"
+        />
+
+    <Button
+        android:id="@+id/button_connect_msg"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/button_thread_looper"
+        android:layout_toEndOf="@+id/button_connect_geo"
+        android:layout_toRightOf="@+id/button_connect_geo"
+        android:text="connect msg"
+        />
+
+    <Button
+        android:id="@+id/button_disconnect_msg"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/button_connect_geo"
+        android:layout_toEndOf="@+id/button_disconnect_geo"
+        android:layout_toRightOf="@+id/button_disconnect_geo"
+        android:text="disconnect msg"
+        />
+
+    <Button
+        android:id="@+id/button_reset"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/button_disconnect_geo"
+        android:text="reset"
+        />
+
+    <Button
+        android:id="@+id/button_finish"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/button_reset"
+        android:text="finish"
+        />
+
+
+</RelativeLayout>
