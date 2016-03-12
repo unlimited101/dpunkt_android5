@@ -46,7 +46,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_below="@+id/button_thread_looper"
-        android:text="connect geo"
+        android:text="conn geo"
         />
 
     <Button
@@ -54,7 +54,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_below="@+id/button_connect_geo"
-        android:text="disconnect geo"
+        android:text="disconn geo"
         />
 
     <Button
@@ -64,7 +64,7 @@
         android:layout_below="@+id/button_thread_looper"
         android:layout_toEndOf="@+id/button_connect_geo"
         android:layout_toRightOf="@+id/button_connect_geo"
-        android:text="connect msg"
+        android:text="conn msg"
         />
 
     <Button
@@ -74,14 +74,42 @@
         android:layout_below="@+id/button_connect_geo"
         android:layout_toEndOf="@+id/button_disconnect_geo"
         android:layout_toRightOf="@+id/button_disconnect_geo"
-        android:text="disconnect msg"
+        android:text="disconn msg"
+        />
+
+    <Button
+        android:id="@+id/button_connect_remote"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/button_thread_looper"
+        android:layout_toEndOf="@+id/button_connect_msg"
+        android:layout_toRightOf="@+id/button_connect_msg"
+        android:text="conn remote"
+        />
+
+    <Button
+        android:id="@+id/button_disconnect_remote"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/button_connect_geo"
+        android:layout_toEndOf="@+id/button_disconnect_msg"
+        android:layout_toRightOf="@+id/button_disconnect_msg"
+        android:text="disconn remote"
+        />
+
+    <Button
+        android:id="@+id/button_calc_triple"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/button_disconnect_geo"
+        android:text="calculate triple"
         />
 
     <Button
         android:id="@+id/button_reset"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/button_disconnect_geo"
+        android:layout_below="@+id/button_calc_triple"
         android:text="reset"
         />
 

@@ -8,6 +8,7 @@ import android.net.Uri;
 import android.os.Handler;
 import android.os.IBinder;
 import android.os.Message;
+import android.os.RemoteException;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
@@ -31,6 +32,7 @@ public class MainActivity extends AppCompatActivity {
 
     private GeoPositionService.GeoPositionServiceBinder mGeoPositionServiceBinder;
     private MessageService.MessageServiceBinder mMessageServiceBinder;
+    private IRemoteService mRemoteServiceBinder;
 
     private final Handler mGeoHandler = new Handler();
     private final Handler mMsgHandler = new Handler() {
@@ -42,6 +44,7 @@ public class MainActivity extends AppCompatActivity {
             super.handleMessage(msg);
         }
     };
+
 
 
     class MyRunnable implements Runnable {
@@ -75,6 +78,28 @@ public class MainActivity extends AppCompatActivity {
             mMessageServiceBinder = (MessageService.MessageServiceBinder) binder;
             mMessageServiceBinder.setActivityCallbackHandler(mMsgHandler);
             mMessageServiceBinder.calcResult();
+        }
+
+        @Override
+        public void onServiceDisconnected(ComponentName name) {
+
+        }
+    };
+
+    private ServiceConnection mRemoteServiceConnection = new ServiceConnection() {
+        @Override
+        public void onServiceConnected(ComponentName name, IBinder binder) {
+            mRemoteServiceBinder = IRemoteService.Stub.asInterface(binder);
+            long res = 0;
+            try {
+                res = mRemoteServiceBinder.calcResult();
+            } catch (RemoteException e) {
+                e.printStackTrace();
+            } finally {
+                if (res != 0) {
+                    mTextView.setText("" + res);
+                }
+            }
         }
 
         @Override
@@ -152,6 +177,30 @@ public class MainActivity extends AppCompatActivity {
             unbindService(mMessageServiceConnection);
             stopService(new Intent(this, MessageService.class));
         } catch (Exception e) {}
+    }
+
+    @OnClick(R.id.button_connect_remote)
+    public void buttonConnectRemoteClick() {
+        final Intent remoteIntent = new Intent(this, RemoteService.class);
+        bindService(remoteIntent, mRemoteServiceConnection, Context.BIND_AUTO_CREATE);
+    }
+
+    @OnClick(R.id.button_disconnect_remote)
+    public void buttonDisconnectRemoteClick() {
+        try {
+            unbindService(mRemoteServiceConnection);
+            stopService(new Intent(this, RemoteService.class));
+        } catch (Exception e) {}
+    }
+
+
+    @OnClick(R.id.button_calc_triple)
+    public void buttonCalcTripleClick() {
+        try {
+            mTextView.setText(mTextView.getText() + " " + mRemoteServiceBinder.getTripleSum(new Triple(1, 2, 3)));
+        } catch (RemoteException e) {
+            e.printStackTrace();
+        }
     }
 
     @OnClick(R.id.button_reset)
